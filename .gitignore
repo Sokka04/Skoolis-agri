@@ -1,0 +1,20 @@
+# Ignore configuration files with sensitive data (if any are added later, though currently db.php has the root password, in a real scenario we'd ignore it and use a .env or db.php.example)
+# For a school project, it's often fine to commit db.php so the teacher can run it, but let's ignore typical XAMPP/OS files.
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

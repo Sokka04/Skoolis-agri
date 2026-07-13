@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor Administrateur as admin
+actor Agriculteur as agri
+actor "Responsable de coopérative" as resp
+
+rectangle "Système d'Information Skoolis-AGRI" {
+    usecase "Gérer les agriculteurs et coopératives" as UC_F1
+    usecase "Gérer les parcelles" as UC_F2
+    usecase "Gérer les cultures et rotations" as UC_F3
+    usecase "Suivre les intrants utilisés" as UC_F4
+    usecase "Enregistrer les récoltes" as UC_F5
+    usecase "Générer rapports (Optionnel)" as UC_F6
+    usecase "Alertes rotations (Optionnel)" as UC_F7
+    
+    usecase "S'authentifier" as UC_Auth
+}
+
+admin --> UC_F1
+admin --> UC_F2
+admin --> UC_F3
+
+agri --> UC_F4
+agri --> UC_F5
+agri --> UC_F2 : "Consulter ses parcelles"
+
+resp --> UC_F6
+
+' Inclusions : toutes les actions nécessitent d'être connecté
+UC_F1 ..> UC_Auth : <<include>>
+UC_F2 ..> UC_Auth : <<include>>
+UC_F3 ..> UC_Auth : <<include>>
+UC_F4 ..> UC_Auth : <<include>>
+UC_F5 ..> UC_Auth : <<include>>
+UC_F6 ..> UC_Auth : <<include>>
+
+' Extensions (Optionnelles)
+UC_F7 .> UC_F3 : <<extend>> (Se déclenche lors de la gestion des cultures/rotations)
+
+@enduml
