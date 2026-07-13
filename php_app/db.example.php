@@ -1,8 +1,10 @@
 <?php
+// Exemple de configuration de la base de données.
+// Renommez ce fichier en db.php et renseignez vos identifiants.
 $host = 'localhost';
 $dbname = 'skoolis_agri';
 $username = 'root';
-$password = 'Ank1a2y3@';
+$password = 'VOTRE_MOT_DE_PASSE_ICI';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
